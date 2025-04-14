@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator_example/sample_circular_page.dart';
 import 'package:percent_indicator_example/sample_linear_page.dart';
 import 'package:percent_indicator_example/multi_segment_page.dart';
+import 'package:percent_indicator_example/tcb_page.dart';
+import 'package:percent_indicator_example/value_cubit.dart';
 
 void main() {
   runApp(MaterialApp(home: Scaffold(body: SamplePage())));
@@ -50,6 +53,19 @@ class _SamplePageState extends State<SamplePage> {
               color: Colors.blueAccent,
               child: Text("Multi Segment Linear Library"),
               onPressed: () => _openPage(MultiSegmentPage()),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+            ),
+            MaterialButton(
+              color: Colors.greenAccent,
+              child: Text("TCB"),
+              onPressed: () => _openPage(
+                BlocProvider(
+                  create: (context) => ValueCubit(),
+                  child: TcbPage(),
+                ),
+              ),
             ),
           ],
         ),
